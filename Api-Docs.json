@@ -1,0 +1,524 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "Api Documentation",
+		"version": "1.0",
+		"title": "Api Documentation",
+		"termsOfService": "urn:tos",
+		"contact": {
+			
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0"
+		}
+	},
+	"host": "localhost:9090",
+	"basePath": "/",
+	"tags": [
+		{
+			"name": "case-worker-acc-mgmt-rest-controller",
+			"description": "Case Worker Acc Mgmt Rest Controller"
+		},
+		{
+			"name": "plans-management-rest-controller",
+			"description": "Plans Management Rest Controller"
+		}
+	],
+	"paths": {
+		"/caseworkerAcc/create": {
+			"post": {
+				"tags": [
+					"case-worker-acc-mgmt-rest-controller"
+				],
+				"summary": "createAccount",
+				"operationId": "createAccountUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "accountForm",
+						"description": "accountForm",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CaseWorkerAccount"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/caseworkerAcc/viewAllAcc": {
+			"get": {
+				"tags": [
+					"case-worker-acc-mgmt-rest-controller"
+				],
+				"summary": "viewAccounts",
+				"operationId": "viewAccountsUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/CaseWorkerAccount"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/createPlan": {
+			"post": {
+				"tags": [
+					"plans-management-rest-controller"
+				],
+				"summary": "createPlan",
+				"operationId": "createPlanUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "planForm",
+						"description": "planForm",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/StateInsurancePlans"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/editAcc/{accountId}": {
+			"get": {
+				"tags": [
+					"case-worker-acc-mgmt-rest-controller"
+				],
+				"summary": "editCaseWorkerAcc",
+				"operationId": "editCaseWorkerAccUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "accountId",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/CaseWorkerAccount"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/editplan/{planId}": {
+			"get": {
+				"tags": [
+					"plans-management-rest-controller"
+				],
+				"summary": "editPlan",
+				"operationId": "editPlanUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "planId",
+						"in": "path",
+						"description": "planId",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/StateInsurancePlans"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/hardDelete/{planId}": {
+			"get": {
+				"tags": [
+					"plans-management-rest-controller"
+				],
+				"summary": "planHardDelete",
+				"operationId": "planHardDeleteUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "planId",
+						"in": "path",
+						"description": "planId",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/hardDeleteAcc/{accountId}": {
+			"get": {
+				"tags": [
+					"case-worker-acc-mgmt-rest-controller"
+				],
+				"summary": "hardDeleteCaseWorkerAcc",
+				"operationId": "hardDeleteCaseWorkerAccUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "accountId",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/softDelete/{planId}": {
+			"get": {
+				"tags": [
+					"plans-management-rest-controller"
+				],
+				"summary": "planSoftDelete",
+				"operationId": "planSoftDeleteUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "planId",
+						"in": "path",
+						"description": "planId",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/softDeleteAcc/{accountId}": {
+			"get": {
+				"tags": [
+					"case-worker-acc-mgmt-rest-controller"
+				],
+				"summary": "softDeleteCaseWorkerAcc",
+				"operationId": "softDeleteCaseWorkerAccUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "accountId",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/viewPlans": {
+			"get": {
+				"tags": [
+					"plans-management-rest-controller"
+				],
+				"summary": "viewPlans",
+				"operationId": "viewPlansUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/StateInsurancePlans"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		}
+	},
+	"definitions": {
+		"CaseWorkerAccount": {
+			"type": "object",
+			"properties": {
+				"accountId": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"activeSW": {
+					"type": "string"
+				},
+				"createdBy": {
+					"type": "string"
+				},
+				"createdDate": {
+					"type": "string",
+					"format": "date"
+				},
+				"dob": {
+					"type": "string",
+					"format": "date"
+				},
+				"email": {
+					"type": "string"
+				},
+				"fullName": {
+					"type": "string"
+				},
+				"gender": {
+					"type": "string"
+				},
+				"mobileNumber": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"pwd": {
+					"type": "string"
+				},
+				"ssn": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"updatedBy": {
+					"type": "string"
+				},
+				"updatedDate": {
+					"type": "string",
+					"format": "date"
+				}
+			},
+			"title": "CaseWorkerAccount"
+		},
+		"StateInsurancePlans": {
+			"type": "object",
+			"properties": {
+				"activeSW": {
+					"type": "string"
+				},
+				"createdBy": {
+					"type": "string"
+				},
+				"createdDate": {
+					"type": "string",
+					"format": "date"
+				},
+				"planCategory": {
+					"type": "string"
+				},
+				"planEndDate": {
+					"type": "string",
+					"format": "date"
+				},
+				"planId": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"planName": {
+					"type": "string"
+				},
+				"planStartDate": {
+					"type": "string",
+					"format": "date"
+				},
+				"updatedBy": {
+					"type": "string"
+				},
+				"updatedDate": {
+					"type": "string",
+					"format": "date"
+				}
+			},
+			"title": "StateInsurancePlans"
+		}
+	}
+}
